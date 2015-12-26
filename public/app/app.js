@@ -8,11 +8,11 @@ var habit = angular.module('habittrackr', [
 habit.config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'app/create/create.html',
+      templateUrl: 'app/templates/create.html',
       controller: 'HabitCreate'
     })
     .when('/habit', {
-      templateUrl: 'app/track/track.html',
+      templateUrl: 'app/templates/track.html',
       controller: 'HabitTrack'
     })
   })
