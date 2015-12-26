@@ -1,0 +1,46 @@
+<div ng-controller='HabitTrack' class="twelve columns">
+  <div class="row" ng-show="!completed"  id="habit-track">
+    <div class="row">
+      <h4>{{username}}'s DashBoard</h4>
+      <hr>
+    </div>
+    <table>
+      <tr>
+        <th>Habit:</th>
+        <td>
+          <!-- <div class="habit-name"> -->
+            {{ name }}
+          <!-- </div> -->
+        </td>
+        <td>
+          <button class="yes" ng-click="increment()"> Did it!
+          </button>
+        </td>
+        <td>
+          <button class="no" ng-click="decrement()"> Didn't do it
+          </button>
+        </td>
+
+        <td>
+          <div id="habit-count">
+            <p ng-model="count">{{ count }} out of {{ days }}</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div ng-show="completed" id="great-job">
+      <div class="row">
+        <div id="great-job-message"class="four columns offset-by-four">
+          <h4>Great job!</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="four columns offset-by-four">
+          <a href="#/" class="button button-primary">Create New Habit</a>
+        </div>
+      </div>
+  </div>
+
+</div>
