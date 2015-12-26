@@ -27,7 +27,9 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('lint', function() {
-
+	return gulp.src(['public/app/*.js', 'public/app/**/*.js'])
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'));
 });
 
 gulp.task('clean-scripts', function() {
@@ -45,20 +47,6 @@ gulp.task('combinejs', function() {
 		.pipe(plugins.uglify())
 		.pipe(gulp.dist('dist/scripts'))
 });
-
-gulp.task('watch', function () {
-	gulp.src([
-			'./public/styles/*.css',
-			'./public/app/*.js',
-			'./public/app/controllers/*.js'
-		],
-		[])
-		.pipe(plugin.watch([
-			'./public/styles/*.css',
-			'./public/app/*.js',
-			'./public/app/controllers/*.js'
-		]))
-})
 
 gulp.task('mocha', function() {
 
