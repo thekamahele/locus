@@ -1,0 +1,27 @@
+{
+  "name": "habittrackr",
+  "description": "a simple app to track habits",
+  "main": "public/app/app.js",
+  "authors": [
+    "Andrew Deal <deal.e.andrew@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "jquery": "jQuery#~2.1.4",
+    "bootstrap": "~3.3.5",
+    "skeleton": "~2.0.4",
+    "angular-animate": "~1.4.7"
+  }
+}
