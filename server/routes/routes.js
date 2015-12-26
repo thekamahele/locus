@@ -1,4 +1,5 @@
-var habitController = require('./controllers/HabitController')
+var habitController = require('./../controllers/HabitController')
+var helpers = require('../utilities/user.js');
 
 
 module.exports = function (app, express) {
