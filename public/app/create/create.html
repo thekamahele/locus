@@ -1,0 +1,43 @@
+
+<div id="habit-create" ng-controller='HabitCreate'>
+
+  <div class="row">
+      <div class="six columns offset-by-three">
+        <h3>Welcome to Habit Trackr</h3>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="four columns offset-by-four">
+        <label>What is your name: </label>
+      </div>
+      <div class="three columns offset-by-four">
+        <input type="text" name="name" value="" ng-model="username" my-enter="increment()" placeholder="your name">
+      </div>
+  </div>
+
+  <div class="row" ng-show="counter >= 1">
+      <div class="four columns offset-by-four">
+        <label>Create a new habit: </label>
+      </div>
+      <div class="three columns offset-by-four">
+        <input type="text" name="name" value="" ng-model="name" my-enter="increment()" placeholder="i.e. sleep 8 hours">
+      </div>
+  </div>
+
+  <div class="row" ng-show="counter >= 2">
+      <div id="days"class="six columns offset-by-two">
+        <label>How many days would you like to track for: </label>
+      </div>
+      <div class="three columns offset-by-four">
+        <input type="text" name="name" value="" ng-model="days" my-enter="addHabit()" placeholder="i.e. 2 weeks">
+      </div>
+  </div>
+
+  <div class="row" ng-show="created" id="tracker">
+      <div class="four columns offset-by-four">
+        <a href="#/habit" class="button button-primary"> Start Tracking</a>
+      </div>
+  </div>
+
+</div>
