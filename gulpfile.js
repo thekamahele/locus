@@ -7,7 +7,10 @@ gulp.task('default', function() {
 		server : {
 			baseDir: 'server/server.js'
 		}
-	})
+	});
+
+	gulp.watch('public/styles/*.css', ['minify-css'], browserSync.reload)
+	gulp.watch(['public/app/*.js', 'public/app/**/*.js'], ['lint', 'combinejs'], browserSync.reload)
 });
 
 gulp.task('clean-styles', function() {
