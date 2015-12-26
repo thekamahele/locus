@@ -75,7 +75,8 @@ habit.factory('Habits', function($http) {
              'count' : count,
             "getAll" : getAll,
                'add' : add,
-         'increment' : increment,           'decrement' : decrement
+         'increment' : increment,
+             "decrement" : decrement
          }
        })
 

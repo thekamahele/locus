@@ -1,5 +1,5 @@
 {
-  "name": "habittrackr",
+  "name": "locus",
   "description": "a simple app to track habits",
   "main": "public/app/app.js",
   "authors": [
