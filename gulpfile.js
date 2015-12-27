@@ -20,8 +20,13 @@ gulp.task('clean-styles', function() {
 });
 
 gulp.task('styles', function() {
-	gulp.src('sass/*.scss')
-		.pipe(plugins.sass().on('error', sass.logError))
+	return gulp.src('./public/sass/*.scss')
+		.pipe(plugins.sass().on('error', plugins.sass.logError))
+		.pipe(gulp.dest('./public/styles/'))
+		.pipe(plugins.autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: false
+		}))
 		.pipe(gulp.dest('./public/styles/'));
 });
 
