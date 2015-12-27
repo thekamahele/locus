@@ -1,9 +1,11 @@
-<div ng-controller="AuthCtrl as auth">
+<div class="loginContainer" ng-controller="AuthCtrl as auth">
     <form ng-submit="auth.login(auth.username, auth.password)">
         <label> User Name: </label>
-        <input type="text" ng-model="auth.username">
+        <input type="text" ng-model="auth.username" placeholder="username">
         <label> Password: </label>
-        <input type="password" ng-model="auth.password">
+        <input type="password" ng-model="auth.password" placeholder="password">
+        <br>
         <input type="submit">
+        <button ng-click="auth.logout()">Logout</button>
     </form>
-    <button ng-click="auth.logout()">Logout</button>
+</div>
