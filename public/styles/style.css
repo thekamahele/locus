@@ -1,2 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One|Dosis:400,600);
+label {
+  font-family: "Dosis", "serif";
+  color: #727272; }
+
 h1 {
-  color: #212121; }
+  font-family: "Fjalla One", "serif"; }

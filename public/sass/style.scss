@@ -1,3 +1,6 @@
+// =============================================================================
+// Color Palette
+// =============================================================================
 $darkPrimary: #1976D2;
 $primary: #2196F3;
 $lightPrimary: #BBDEFB;
@@ -9,6 +12,22 @@ $divider: #B6B6B6;
 
 $border-radius: 15px;
 
+// =============================================================================
+// Fonts/Typeface
+// =============================================================================
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One|Dosis:400,600);
+
+$headerFont: 'Fjalla One', 'serif';
+$mainFont: 'Dosis', 'serif';
+
+label {
+  font-family: $mainFont;
+  color: $secondaryText;
+}
+
 h1 {
-  color: $primaryText;
+  font-family: $headerFont;
+}
+.container {
+
 }
