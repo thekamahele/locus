@@ -5,7 +5,7 @@ var browserSync = require('browser-sync').create();
 gulp.task('default', function() {
 	browserSync.init({
 		server : {
-			baseDir: 'server/server.js'
+			baseDir: 'public/'
 		}
 	});
 
@@ -40,7 +40,8 @@ gulp.task('clean-scripts', function() {
 gulp.task('combinejs', function() {
 	return gulp.src([
 			'./public/app/*.js',
-			'./public/controllers/*.js'
+			'./public/app/**/*.js',
+			'!./public/lib/'
 		])
 		.pipe(plugins.concat('all.js'), { newLine: ';' })
 		.pipe(gulp.dest('dist/scripts'))
@@ -50,7 +51,8 @@ gulp.task('combinejs', function() {
 });
 
 gulp.task('mocha', function() {
-
+	return gulp.src('test/*.js', {read: false})
+		.pipe(plugins.mocha({reporter: 'nyan'}));
 });
 
 gulp.task('docs', function() {
