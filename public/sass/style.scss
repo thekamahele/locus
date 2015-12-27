@@ -81,7 +81,7 @@ body {
 
 label {
   font-family: $mainFont;
-  color: $secondaryText;
+  color: $textIcons;
 }
 
 button {
@@ -90,6 +90,7 @@ button {
 }
 
 input {
+  font-family: $mainFont;
   &[type="submit"] {
     @include button($textIcons, transparent);
     @include border-radius(35px, $divider, 1.5px);

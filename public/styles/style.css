@@ -30,7 +30,7 @@ body {
 
 label {
   font-family: "Dosis", "serif";
-  color: #727272; }
+  color: #FFF; }
 
 button {
   color: #727272;
@@ -38,8 +38,10 @@ button {
   border-radius: 35px;
   border: #B6B6B6 solid 1.5px; }
 
-input[type="submit"] {
-  color: #FFF;
-  background-color: transparent;
-  border-radius: 35px;
-  border: #B6B6B6 solid 1.5px; }
+input {
+  font-family: "Dosis", "serif"; }
+  input[type="submit"] {
+    color: #FFF;
+    background-color: transparent;
+    border-radius: 35px;
+    border: #B6B6B6 solid 1.5px; }
