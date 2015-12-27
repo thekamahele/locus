@@ -24,15 +24,14 @@ locus.config(function ($routeProvider, $httpProvider) {
     })
 });
 
-locus.factory('Auth', function ( $http ) {
+locus.factory('AuthFactory', function ( $http ) {
     var url = 'http://localhost:3000/'
     var verifyUser = function (userObj) {
-        $http({
+        console.log('sending')
+        return $http({
             method : 'POST',
             url    : url + 'api/signin',
             data   : userObj
-        }).then(function(response){
-            return response;
         });
     };
 
