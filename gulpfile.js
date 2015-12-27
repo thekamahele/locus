@@ -9,6 +9,7 @@ gulp.task('default', function() {
 		}
 	});
 
+	gulp.watch('public/sass/*.scss', ['styles'])
 	gulp.watch('public/styles/*.css', ['minify-css'], browserSync.reload)
 	gulp.watch(['public/app/*.js', 'public/app/**/*.js'], ['lint', 'combinejs'], browserSync.reload)
 });
@@ -16,6 +17,12 @@ gulp.task('default', function() {
 gulp.task('clean-styles', function() {
 	return gulp.src('dist/styles/', {read: false})
 		.pipe(plugins.clean())
+});
+
+gulp.task('styles', function() {
+	gulp.src('sass/*.scss')
+		.pipe(plugins.sass().on('error', sass.logError))
+		.pipe(gulp.dest('./public/styles/'));
 });
 
 gulp.task('minify-css', function() {
