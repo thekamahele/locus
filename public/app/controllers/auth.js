@@ -1,19 +1,37 @@
 (function () {
-  angular
-    .module('locus.auth', [])
-    .controller('AuthCtrl', function ( $scope, Auth ) {
-        $scope.username = '';
-        $scope.password = '';
+  'use strict';
+   angular
+    .module( 'locus.auth', [] )
+    .controller('AuthCtrl', function ( AuthFactory ) {
+        'use strict';
 
-        $scope.login = function () {
+        var auth = this;
+        auth.username = '';
+        auth.password = '';
+        auth.login = login;
+        auth.logout = logout;
+
+        function login ( username, password ) {
+            'use strict';
+
             var user = {
-                username : $scope.username,
-                password : $scope.password
+                username : username,
+                password : password
             };
-            Auth.verifyUser(user)
-                .then(function (response) {
-                    console.log('Response is', response);
-                })
+            AuthFactory
+                .login(user)
+                .then(function (res) {
+                    console.log('Response is', res);
+                    console.log('Token is', res.data.token);
+                }, handleError);
+        }
+
+        function logout () {
+            AuthFactory.logout();
+        }
+
+        function handleError (err) {
+            console.log('Err is ', err);
         }
     });
 })();

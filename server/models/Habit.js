@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 
-// Create the MovieSchema.
 var HabitSchema = new mongoose.Schema({
   name: {
     type : String,
