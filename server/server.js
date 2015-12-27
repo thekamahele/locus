@@ -4,22 +4,37 @@ var cors = require('cors');
 var methodOverride = require('method-override');
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
+var db = require('./db-config.js');
+var User = require('./models/User.js').User;
 var app = express();
 
-
-var jwtSecret = 'abcdef1234';
+var jwtSecret = 'andrew'
 
 // Middleware
 app.use(express.static('public'));
 app.use(cors());
-app.use(expressJwt({ secret : jwtSecret }).unless( { path : '/api/signin' } ));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(expressJwt({ secret : 'andrew' }).unless({ path : ['/api/signin', '/api/signup'] }));
 
-app.route('/api/create')
-   .post(function(req, res, next) {
+app.post('/api/signup', function(req, res, next) {
+        var newUser = {
+            name     : req.body.username,
+            email    : req.body.email,
+            password : req.body.password
+        };
 
+
+       var user = new User(newUser);
+       user.save()
+           .then(function(user){
+               console.log('Created...', user);
+               res.statusCode(200);
+           })
+           .catch(function(err) {
+               res.status(500).end('Error creating user, please try again');
+           })
    });
 
 app.post('/api/signin', authenticate, function (req, res) {
