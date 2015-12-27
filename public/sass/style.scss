@@ -10,24 +10,88 @@ $textIcons: #FFF;
 $accent: #03A9F4;
 $divider: #B6B6B6;
 
-$border-radius: 15px;
-
 // =============================================================================
 // Fonts/Typeface
 // =============================================================================
+
 @import url(https://fonts.googleapis.com/css?family=Fjalla+One|Dosis:400,600);
 
 $headerFont: 'Fjalla One', 'serif';
 $mainFont: 'Dosis', 'serif';
+
+// =============================================================================
+// Grid/Containers
+// =============================================================================
+
+@mixin border-radius($radius: 20px, $color: $primary, $thickness: 2px) {
+  border-radius: $radius;
+  border: $color solid $thickness
+}
+
+@mixin button($text, $color) {
+  color: $text;
+  background-color: $color;
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin horizontal-align() {
+  text-align: center;
+}
+
+h1 h2 h3 {
+  font-family: $headerFont;
+}
+
+html {
+  height:100%;
+}
+
+body {
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+}
+
+.mainContainer {
+  height: 100%;
+  background-color: $primary;
+}
+
+.loginContainer {
+  @include horizontal-align();
+  @include vertical-align();
+  @include border-radius(30px, $textIcons, 1px);
+  width: 30%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+// =============================================================================
+// Forms
+// =============================================================================
 
 label {
   font-family: $mainFont;
   color: $secondaryText;
 }
 
-h1 {
-  font-family: $headerFont;
+button {
+  @include button($secondaryText, $textIcons);
+  @include border-radius(35px, $divider, 1.5px);
 }
-.container {
 
+input {
+  &[type="submit"] {
+    @include button($textIcons, transparent);
+    @include border-radius(35px, $divider, 1.5px);
+  }
 }
