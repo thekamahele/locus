@@ -1,66 +1,47 @@
-body h3 label  {
-  font-weight: 100;
-}
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One|Dosis:400,600);
+h1 h2 h3 {
+  font-family: "Fjalla One", "serif"; }
+
+html {
+  height: 100%; }
+
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }
+
+.mainContainer {
+  height: 100%;
+  background-color: #2196F3; }
+
+.loginContainer {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-radius: 30px;
+  border: #FFF solid 1px;
+  width: 30%;
+  padding: 20px;
+  margin: 0 auto; }
 
 label {
-  color: red;
-}
+  font-family: "Dosis", "serif";
+  color: #FFF; }
 
-input, a {
-  margin-top: 10px
-}
+button {
+  color: #727272;
+  background-color: #FFF;
+  border-radius: 35px;
+  border: #B6B6B6 solid 1.5px; }
 
-/*===========================
-
-         habit-create
-
-============================*/
-
-#habit-create {
-  margin-top: 16%;
-  margin-left: 10%;
-}
-
-#habit-create label {
-  margin-left: 15%;
-}
-
-#habit-create input {
-  margin-left: 8%;
-}
-
-#habit-create a {
-  margin-left: 10%;
-}
-
-#tracker {
-  margin-top: 10px;
-}
-
-/*===========================
-
-         habit-track
-
-============================*/
-table {
-  width: 100%;
-}
-
-#habit-track {
-  margin-top: 10%;
-}
-
-
-#great-job {
-  margin-top: 20%;
-  margin-left: 10%;
-}
-
-
-#great-job-message {
-  margin-left: 38%;
-}
-
-#days{
-  margin-left: 22%
-}
+input {
+  font-family: "Dosis", "serif"; }
+  input[type="submit"] {
+    color: #FFF;
+    background-color: transparent;
+    border-radius: 35px;
+    border: #B6B6B6 solid 1.5px; }
