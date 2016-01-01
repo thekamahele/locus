@@ -1,21 +1,13 @@
-require('./dbConfig.js');
 var express = require('express');
-var app = express();
 var mongoose = require('mongoose');
+var app = express();
+
+
 mongoose.connect('mongodb://localhost/locus');
 
+require('./config/middleware.js')( app , express);
 
 //TODO: Change how secret is stored
-
-// Middleware
-
-
-
-// Routes
-app.post('/api/signup', util.checkUsername, util.createUser);
-
-app.post('/api/signin', util.checkPassword, util.generateToken);
-
 
 var server = app.listen(3000, function(){
   console.log("Server is running on http://localhost:" + server.address().port)
