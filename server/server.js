@@ -1,23 +1,14 @@
-require('./db-config.js');
+require('./dbConfig.js');
 var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var methodOverride = require('method-override');
-var jwt = require('jsonwebtoken');
-var expressJwt = require('express-jwt');
-var User = require('./models/User.js');
-var util = require('./utilities/helpers.js');
 var app = express();
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/locus');
+
 
 //TODO: Change how secret is stored
 
 // Middleware
-app.use(express.static('public'));
-app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.use(methodOverride('X-HTTP-Method-Override'));
-app.use(expressJwt({ secret : 'andrew' }).unless({ path : ['/api/signin', '/api/signup'] }));
+
 
 
 // Routes
