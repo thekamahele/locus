@@ -22,19 +22,20 @@ module.exports.checkPassword = function (req, res, next) {
         .then(function(user) {
             if (!user) {
                 res.status(404).end('Username not found, please try again!');
+            } else {
+                return bcrypt.compareAsync(req.body.password, user.get('password'))
+                    .catch(function (err) {
+                        console.log('Error comparing password is ', err);
+                        res.status(500).end('Error comparing passwords, please try again');
+                    });
             }
-            console.log('Comparing passwords');
-            return bcrypt.compareAsync(req.body.password, user.get('password'))
-                         .catch(function(err) {
-                             console.log('Error comparing password is ', err);
-                             res.status(500).end('Error comparing passwords, please try again');
-                         })
         })
         .then(function(comp){
             if (!comp) {
                 res.status(409).end('Passwords do not match, please try again!');
+            } else {
+                next();
             }
-            next();
         });
 };
 
@@ -68,10 +69,10 @@ module.exports.createUser = function (req, res, next) {
 
     var newUser = {
         firstName : req.body.firstName,
-        lastName : req.body.lastName,
-        username : username,
-        password : password,
-        email : req.body.email
+        lastName  : req.body.lastName,
+        username  : username,
+        password  : password,
+        email     : req.body.email
     };
 
     hashPassword(username, password)
