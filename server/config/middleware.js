@@ -9,9 +9,10 @@ module.exports = function ( app, express ) {
     var userRouter = express.Router();
 
     app.use(morgan('dev'));
+    app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
     app.use(express.static('public'));
-    app.use(expressJwt({ secret : 'andrew' }).unless({ path : ['/api/signin', '/api/signup'] }));
+    app.use(expressJwt({ secret : 'secret' }).unless({ path : ['/api/users/signin', '/api/users/signup'] }));
 
     app.use('/api/users', userRouter);
 
