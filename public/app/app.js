@@ -5,30 +5,33 @@
         'locus.auth',
         'locus.dashboard',
         'ngAnimate',
-        'ngRoute'], function config( $httpProvider ) {
+        'ui.router'], function config( $httpProvider ) {
             $httpProvider.interceptors.push('AuthInterceptor');
         });
 
 /////////////// Routes /////////////////
-    locus.config(function ($routeProvider, $httpProvider) {
+    locus.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         'use strict';
 
-        $routeProvider
-            .when('/', {
+        $urlRouterProvider.otherwise('dashboard');
+
+        $stateProvider
+            .state('login', {
+                url: '/login',
                 templateUrl: 'app/templates/login.html',
-                controller: 'AuthCtrl'
+                controller: 'AuthCtrl as auth'
             })
-            .when('/dashboard', {
-                templateUrl: 'app/templates/dashboard.html',
-                controller: 'DashboardCtrl'
-            })
-            .when('/signup', {
+            .state('signup', {
+                url: '/signup',
                 templateUrl: 'app/templates/signup.html',
-                controller: 'AuthCtrl'
+                controller: 'AuthCtrl as auth'
             })
-            .otherwise({
-                redirectTo: '/'
-            })
+            .state('dashboard', {
+                url: '/dashboard',
+                templateUrl: 'app/templates/dashboard.html',
+                controller: 'DashboardCtrl as dash'
+            });
+
     });
 
     locus.factory('AuthFactory',['TokenFactory', '$http', function (TokenFactory, $http) {
