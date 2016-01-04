@@ -19,17 +19,17 @@
             .state('login', {
                 url: '/login',
                 templateUrl: 'app/templates/login.html',
-                controller: 'AuthCtrl'
+                controller: 'AuthCtrl as auth'
             })
             .state('signup', {
                 url: '/signup',
                 templateUrl: 'app/templates/signup.html',
-                controller: 'AuthCtrl'
+                controller: 'AuthCtrl as auth'
             })
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'app/templates/dashboard.html',
-                controller: 'DashboardCtrl'
+                controller: 'DashboardCtrl as dash'
             });
 
     });
