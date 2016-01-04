@@ -3,15 +3,16 @@ var plugins = require('gulp-load-plugins')();
 var browserSync = require('browser-sync').create();
 
 gulp.task('default', function() {
-	browserSync.init({
-		server : {
-			baseDir: 'public/'
+	browserSync.init(['./public/**/**.**'],{
+		server: {
+			baseDir: './public'
 		}
 	});
 
 	gulp.watch('public/sass/*.scss', ['styles'])
 	gulp.watch('public/styles/*.css', ['minify-css'], browserSync.reload)
-	gulp.watch(['public/app/*.js', 'public/app/**/*.js'], ['lint', 'combinejs'], browserSync.reload)
+	gulp.watch(['public/app/*.js', 'public/app/**/*.js'], ['lint', 'combinejs'])
+	gulp.watch(['public/app/*.html', 'public/app/**/*.html']).on('change', browserSync.reload);
 });
 
 gulp.task('clean-styles', function() {
