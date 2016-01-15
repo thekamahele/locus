@@ -69,10 +69,12 @@ body {
 .loginContainer {
   @include horizontal-align();
   @include vertical-align();
-  @include border-radius(30px, $textIcons, 1px);
   width: 30%;
-  padding: 20px;
   margin: 0 auto;
+  .loginForm {
+    @include border-radius(30px, $textIcons, 1px);
+    padding: 20px;
+  }
 }
 
 // =============================================================================
@@ -94,5 +96,20 @@ input {
   &[type="submit"] {
     @include button($textIcons, transparent);
     @include border-radius(35px, $divider, 1.5px);
+  }
+}
+
+// =============================================================================
+// Images
+// =============================================================================
+
+#logo {
+  @include horizontal-align();
+  h1 {
+    display: inline-block;
+    font-family: $mainFont;
+    font-size: 6em;
+    color: $lightPrimary;
+    margin-bottom: 0;
   }
 }

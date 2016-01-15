@@ -22,11 +22,12 @@ body {
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  border-radius: 30px;
-  border: #FFF solid 1px;
   width: 30%;
-  padding: 20px;
   margin: 0 auto; }
+  .loginContainer .loginForm {
+    border-radius: 30px;
+    border: #FFF solid 1px;
+    padding: 20px; }
 
 label {
   font-family: "Dosis", "serif";
@@ -45,3 +46,12 @@ input {
     background-color: transparent;
     border-radius: 35px;
     border: #B6B6B6 solid 1.5px; }
+
+#logo {
+  text-align: center; }
+  #logo h1 {
+    display: inline-block;
+    font-family: "Dosis", "serif";
+    font-size: 6em;
+    color: #BBDEFB;
+    margin-bottom: 0; }

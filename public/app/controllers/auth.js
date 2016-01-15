@@ -7,6 +7,8 @@
         var auth = this;
         auth.username = '';
         auth.password = '';
+        auth.name = '';
+        auth.email = '';
         auth.login = login;
         auth.logout = logout;
         auth.signup = signup;

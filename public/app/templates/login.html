@@ -1,5 +1,6 @@
-<div class="loginContainer" ng-controller="AuthCtrl as auth">
-    <form ng-submit="auth.login(auth.username, auth.password)">
+<div class="loginContainer">
+<div id="logo"><img src="../../assets/locuslogo.png" alt="logo"><h1>LOCUS</h1></div>
+    <form class="loginForm" ng-submit="auth.login(auth.username, auth.password)">
         <label> User Name: </label>
         <input type="text" ng-model="auth.username" placeholder="username">
         <label> Password: </label>
