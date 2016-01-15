@@ -37,21 +37,27 @@ button {
   color: #727272;
   background-color: #FFF;
   border-radius: 35px;
-  border: #B6B6B6 solid 1.5px; }
+  border: #B6B6B6 solid 0px;
+  font-family: "Dosis", "serif"; }
 
 input {
-  font-family: "Dosis", "serif"; }
+  font-family: "Dosis", "serif";
+  width: 65%; }
   input[type="submit"] {
     color: #FFF;
     background-color: transparent;
     border-radius: 35px;
-    border: #B6B6B6 solid 1.5px; }
+    border: #B6B6B6 solid 1.5px;
+    width: 30%; }
 
 #logo {
-  text-align: center; }
+  text-align: center;
+  display: table;
+  margin-bottom: 15px; }
   #logo h1 {
-    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
     font-family: "Dosis", "serif";
     font-size: 6em;
     color: #BBDEFB;
-    margin-bottom: 0; }
+    padding-left: 20px; }
