@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
+var runSequence = require('run-sequence')
 var browserSync = require('browser-sync').create();
 
 gulp.task('default', function() {
@@ -10,8 +11,8 @@ gulp.task('default', function() {
 	});
 
 	gulp.watch('public/sass/*.scss', ['styles'])
-	gulp.watch('public/styles/*.css', ['minify-css'], browserSync.reload)
-	gulp.watch(['public/app/*.js', 'public/app/**/*.js'], ['lint', 'combinejs'])
+	gulp.watch('public/styles/*.css', browserSync.reload)
+	//gulp.watch(['public/app/*.js', 'public/app/**/*.js'], ['lint', 'combinejs'])
 	gulp.watch(['public/app/*.html', 'public/app/**/*.html']).on('change', browserSync.reload);
 });
 
@@ -72,3 +73,9 @@ gulp.task('docs', function() {
 	return gulp.src(['README.md', 'server/*.js','server/**/*.js', 'public/*.js', 'public/**/*.js'])
 		.pipe(plugins.jsdoc('documentation-output/'))
 })
+
+gulp.task('build', function() {
+	runSequence(['clean-scripts', 'clean-styles'], 'lint', ['minify-css', 'combinejs'])
+})
+
+gulp.task('travis', ['mocha', 'build']);
