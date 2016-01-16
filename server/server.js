@@ -1,11 +1,7 @@
 var express = require('express');
-var mongoose = require('mongoose');
 var app = express();
 
-
-mongoose.connect('mongodb://localhost/locus');
-
-require('./config/middleware.js')( app , express);
+require('./config/middleware.js')( app , express );
 
 //TODO: Change how secret is stored
 
