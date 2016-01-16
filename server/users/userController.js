@@ -2,6 +2,7 @@ var User = require('./userModel');
 var Promise = require('bluebird');
 var bcrypt = Promise.promisifyAll(require('bcrypt'));
 var jwt = require('jsonwebtoken');
+var client = require('../config/db-config');
 
 module.exports.signin = function(req, res, next) {
     var username = req.body.username;
@@ -20,14 +21,28 @@ module.exports.signin = function(req, res, next) {
 };
 
 module.exports.signup = function( req, res, next ) {
-    User.findOne({ username : req.body.username })
-        .then(function(user) {
-            if (user !== null) {
-                res.status(409).end('Username already taken, please try again!');
-            } else {
-                next()
-            }
-        });
+    console.log('user is', req.body);
+
+    console.log('client is ',client);
+
+    client.getAsync(req.body.username)
+          .then(function (user) {
+             if ( !user ) {
+                 next();
+             } else {
+                 res.status(409)
+             }
+          });
+
+
+    //User.findOne({ username : req.body.username })
+    //    .then(function(user) {
+    //        if (user !== null) {
+    //            res.status(409).end('Username already taken, please try again!');
+    //        } else {
+    //            next()
+    //        }
+    //    });
 };
 
 module.exports.createUser = function (req, res, next) {
