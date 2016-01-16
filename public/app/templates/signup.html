@@ -1,8 +1,15 @@
-<div>
-    <label> User Name: </label>
-    <input type="text" ng-model="username">
-    <label> Password: </label>
-    <input type="text" ng-model="password">
-    <button ng-click="auth.signup()">Signup</button>
-    <button ui-sref="login">Login</button>
+<div class="loginContainer loginForm">
+        <div id="logo">
+            <img src="../../assets/locuslogo.png" alt="logo">
+            <h1>LOCUS</h1>
+        </div>
+        <div>
+            <input type="text" ng-model="auth.name" placeholder="Name">
+            <input type="email" ng-model="auth.email" placeholder="Email">
+            <input type="text" ng-model="auth.username" placeholder="Username">
+            <input type="text" ng-model="auth.password" placeholder="Password">
+            <br>
+            <button id="signup-btn" ng-click="auth.signup()">Signup</button>
+            <button ui-sref="login">Login</button>
+        </div>
 </div>
