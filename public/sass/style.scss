@@ -20,8 +20,13 @@ $headerFont: 'Fjalla One', 'serif';
 $mainFont: 'Dosis', 'serif';
 
 // =============================================================================
-// Grid/Containers
+// Mixins
 // =============================================================================
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
 
 @mixin border-radius($radius: 20px, $color: $primary, $thickness: 2px) {
   border-radius: $radius;
@@ -29,6 +34,7 @@ $mainFont: 'Dosis', 'serif';
 }
 
 @mixin button($text, $color) {
+  @include border-radius(35px, $divider, 1.5px);
   color: $text;
   background-color: $color;
 }
@@ -45,12 +51,28 @@ $mainFont: 'Dosis', 'serif';
   text-align: center;
 }
 
+@mixin bg-gradient-t2b($start-colour, $end-colour) {
+  background-color: $start-colour;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($start-colour), to($end-colour));
+  background-image: -webkit-linear-gradient(top, $start-colour, $end-colour);
+  background-image:    -moz-linear-gradient(top, $start-colour, $end-colour);
+  background-image:     -ms-linear-gradient(top, $start-colour, $end-colour);
+  background-image:      -o-linear-gradient(top, $start-colour, $end-colour);
+  background-image:         linear-gradient(top, $start-colour, $end-colour);
+  filter:            progid:DXImageTransform.Microsoft.gradient(start-colourStr='#{$start-colour}', end-colourStr='#{$end-colour}');
+}
+
+// =============================================================================
+// Grid/Containers
+// =============================================================================
+
 h1 h2 h3 {
   font-family: $headerFont;
 }
 
 html {
-  height:100%;
+ @include size(null, 100%)
+  //height:100%;
 }
 
 body {
@@ -63,18 +85,20 @@ body {
 
 .mainContainer {
   height: 100%;
-  background-color: $primary;
+  @include bg-gradient-t2b($primary, $textIcons)
 }
 
 .loginContainer {
   @include horizontal-align();
   @include vertical-align();
-  width: 30%;
+  //width: 30%;
+  @include size(30%, null);
   margin: 0 auto;
-  .loginForm {
-    @include border-radius(30px, $textIcons, 1px);
-    padding: 20px;
-  }
+}
+
+.loginForm {
+  @include border-radius(30px, $textIcons, 1px);
+  padding: 40px 20px;
 }
 
 // =============================================================================
@@ -89,16 +113,23 @@ label {
 button {
   @include button($secondaryText, $textIcons);
   @include border-radius(35px, $divider, 0px);
+  @include size(35%, null);
   font-family: $mainFont;
+  margin-top: 15px;
+}
+
+#signup-btn {
+  @include button($textIcons, transparent);
 }
 
 input {
+  @include size(65%, null);
   font-family: $mainFont;
-  width: 65%;
+  margin: 15px 5px 0px 5px;
   &[type="submit"] {
     @include button($textIcons, transparent);
     @include border-radius(35px, $divider, 1.5px);
-    width: 30%;
+    @include size(35%, null);
   }
 }
 
@@ -109,13 +140,14 @@ input {
 #logo {
   @include horizontal-align();
   display: table;
-  margin-bottom: 15px;
+  //margin-bottom: 15px;
+  margin: 0 10px 0 10px;
   h1 {
     display: table-cell;
     vertical-align: middle;
     font-family: $mainFont;
     font-size: 6em;
     color: $lightPrimary;
-    padding-left: 20px;
+    padding-left: 15px;
   }
 }

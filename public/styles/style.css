@@ -14,7 +14,9 @@ body {
 
 .mainContainer {
   height: 100%;
-  background-color: #2196F3; }
+  background-color: #2196F3;
+  background-image: linear-gradient(top, #2196F3, #FFF);
+  filter: progid:DXImageTransform.Microsoft.gradient(start-colourStr='#2196F3', end-colourStr='#FFF'); }
 
 .loginContainer {
   text-align: center;
@@ -24,40 +26,54 @@ body {
   transform: translateY(-50%);
   width: 30%;
   margin: 0 auto; }
-  .loginContainer .loginForm {
-    border-radius: 30px;
-    border: #FFF solid 1px;
-    padding: 20px; }
+
+.loginForm {
+  border-radius: 30px;
+  border: #FFF solid 1px;
+  padding: 40px 20px; }
 
 label {
   font-family: "Dosis", "serif";
   color: #FFF; }
 
 button {
+  border-radius: 35px;
+  border: #B6B6B6 solid 1.5px;
   color: #727272;
   background-color: #FFF;
   border-radius: 35px;
   border: #B6B6B6 solid 0px;
-  font-family: "Dosis", "serif"; }
+  width: 35%;
+  font-family: "Dosis", "serif";
+  margin-top: 15px; }
+
+#signup-btn {
+  border-radius: 35px;
+  border: #B6B6B6 solid 1.5px;
+  color: #FFF;
+  background-color: transparent; }
 
 input {
+  width: 65%;
   font-family: "Dosis", "serif";
-  width: 65%; }
+  margin: 15px 5px 0px 5px; }
   input[type="submit"] {
+    border-radius: 35px;
+    border: #B6B6B6 solid 1.5px;
     color: #FFF;
     background-color: transparent;
     border-radius: 35px;
     border: #B6B6B6 solid 1.5px;
-    width: 30%; }
+    width: 35%; }
 
 #logo {
   text-align: center;
   display: table;
-  margin-bottom: 15px; }
+  margin: 0 10px 0 10px; }
   #logo h1 {
     display: table-cell;
     vertical-align: middle;
     font-family: "Dosis", "serif";
     font-size: 6em;
     color: #BBDEFB;
-    padding-left: 20px; }
+    padding-left: 15px; }
