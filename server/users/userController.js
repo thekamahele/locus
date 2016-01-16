@@ -6,8 +6,7 @@ var client = require('../config/db-config');
 
 module.exports.signin = function(req, res, next) {
     var username = req.body.username;
-    var password = req.body.password;
-    checkPassword(username, password)
+    checkPassword(username, req.body.password)
         .then(function ( match ){
             if ( match ){
                 var token = jwt.sign({
@@ -21,49 +20,34 @@ module.exports.signin = function(req, res, next) {
 };
 
 module.exports.signup = function( req, res, next ) {
-    console.log('user is', req.body);
-
-    console.log('client is ',client);
-
-    client.getAsync(req.body.username)
+    client.hmgetAsync('user:'+req.body.username, 'username')
           .then(function (user) {
-             if ( !user ) {
+              if ( !user[0] ) {
                  next();
              } else {
-                 res.status(409)
+                 res.sendStatus(409);
              }
           });
-
-
-    //User.findOne({ username : req.body.username })
-    //    .then(function(user) {
-    //        if (user !== null) {
-    //            res.status(409).end('Username already taken, please try again!');
-    //        } else {
-    //            next()
-    //        }
-    //    });
 };
 
 module.exports.createUser = function (req, res, next) {
     var password = req.body.password;
     var username = req.body.username;
-
     hashPassword(username, password)
         .then(function(hash){
-            var user = {
-                username  : username,
-                password  : hash,
-                email     : req.body.email,
-                firstName : req.body.firstName,
-                lastName  : req.body.lastName
-            };
-            return User.create(user);
+            var user = [
+                "username", username,
+                "password", hash,
+                "email", req.body.email,
+                "firstName", req.body.firstName,
+                "lastName", req.body.lastName
+            ];
+
+            return client.hmsetAsync("user:" + username, user);
         })
         .then(function(){
             res.sendStatus(200);
         })
-
 };
 
 function generateToken (req, res, next) {
@@ -88,8 +72,8 @@ function hashPassword ( username, password ) {
 }
 
 function checkPassword ( username, password ) {
-    return User.findOne({ username : username })
-        .then(function( user ){
-          return bcrypt.compareAsync(password, user.password);
+    return client.hmgetAsync('user:'+username, 'password')
+        .then(function( pwd ){
+          return bcrypt.compareAsync(password, pwd[0]);
         })
 }
