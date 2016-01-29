@@ -4,6 +4,13 @@ var runSequence = require('run-sequence')
 var browserSync = require('browser-sync').create();
 
 gulp.task('default', function() {
+	plugins.nodemon({
+		script: 'server/server.js',
+		tasks: ['browserify']
+	})
+});
+
+gulp.task('browserify', function() {
 	browserSync.init(['./public/**/**.**'],{
 		server: {
 			baseDir: './public'
@@ -15,6 +22,7 @@ gulp.task('default', function() {
 	//gulp.watch(['public/app/*.js', 'public/app/**/*.js'], ['lint', 'combinejs'])
 	gulp.watch(['public/app/*.html', 'public/app/**/*.html']).on('change', browserSync.reload);
 });
+
 
 gulp.task('clean-styles', function() {
 	return gulp.src('dist/styles/', {read: false})
