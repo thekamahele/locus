@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 var expressJwt = require('express-jwt');
 
 
-module.exports = function ( app, express, client ) {
+module.exports = function ( app, express ) {
     var userRouter = express.Router();
 
     app.use(morgan('dev'));
